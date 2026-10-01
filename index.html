@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손아영 - 자기소개</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            background-color: #f7f9f6;
+            color: #3b4a40;
+            line-height: 1.6;
+        }
+
+        /* 상단 소개 영역 (편안한 올리브/세이지 그린 톤) */
+        header {
+            background-color: #5c7662;
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 4px 15px rgba(92, 118, 98, 0.15);
+        }
+
+        .profile-icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #d8e2dc;
+        }
+
+        /* 밝은 본문 영역 (2단 구성) */
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(92, 118, 98, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #e2ece9;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(92, 118, 98, 0.1);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            color: #3b4a40;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eef2f0;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 링크 버튼 스타일 */
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px 16px;
+            background-color: #eef2f0;
+            color: #4a6353;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .link-btn:hover {
+            background-color: #5c7662;
+            color: #ffffff;
+        }
+
+        /* 목록 스타일 */
+        .hobby-list {
+            list-style: none;
+        }
+
+        .hobby-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eef2f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            color: #556b5d;
+        }
+
+        .hobby-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* 미니 달력 스타일 */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #5c7662;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+        }
+
+        .calendar-grid div {
+            padding: 6px 0;
+            font-size: 13px;
+        }
+
+        .calendar-grid .day-name {
+            font-weight: 600;
+            color: #93a399;
+            font-size: 12px;
+        }
+
+        .calendar-grid .date {
+            color: #556b5d;
+            border-radius: 4px;
+        }
+
+        .calendar-grid .date.today {
+            background-color: #5c7662;
+            color: white;
+            font-weight: bold;
+        }
+
+        .calendar-grid .date.other-month {
+            color: #cbd5d0;
+        }
+
+        /* 목표 한 줄 카드 (부드러운 세이지 그라데이션) */
+        .goal-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #6b8e73 0%, #4a6353 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(107, 142, 115, 0.2);
+        }
+
+        .goal-card h2 {
+            color: #ffffff;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            justify-content: center;
+        }
+
+        .goal-card p {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 15px;
+            color: #f1f7f3;
+        }
+
+        /* 하단 명함 스타일 카드 (가운데 정렬) */
+        .business-card-wrapper {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .business-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            padding: 25px 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(92, 118, 98, 0.05);
+            border: 2px dashed #b5c7bc;
+            text-align: center;
+        }
+
+        .business-card .bc-icon {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .business-card h3 {
+            font-size: 20px;
+            color: #3b4a40;
+            margin-bottom: 5px;
+        }
+
+        .business-card p {
+            font-size: 15px;
+            color: #728c7c;
+        }
+
+        /* 카운터 버튼 영역 (전체 너비) */
+        .counter-section {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+            padding: 20px;
+        }
+
+        .counter-btn {
+            background-color: #5c7662;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(92, 118, 98, 0.25);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .counter-btn:hover {
+            background-color: #4a6353;
+            transform: translateY(-2px);
+        }
+
+        .counter-btn:active {
+            transform: translateY(0);
+        }
+
+        #counter-message {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #4a6353;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #counter-message.show {
+            opacity: 1;
+        }
+
+        /* 반응형 디자인 (스마트폰 대응) */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+                margin: 20px auto;
+            }
+            header {
+                padding: 40px 20px;
+            }
+            header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 소개 영역 -->
+    <header>
+        <div class="profile-icon">👩‍💼</div>
+        <h1>손아영</h1>
+        <p>경영학과 3학년</p>
+    </header>
+
+    <!-- 밝은 본문 영역 (2단 구성) -->
+    <main>
+        <!-- 왼쪽 컬럼: 1. 관심 분야 / 2. 요즘 배우는 것 -->
+        <div class="column">
+            <!-- 관심 분야 카드 -->
+            <section class="card">
+                <h2>🎯 관심 분야</h2>
+                <p style="font-size: 18px; color: #4a6353; font-weight: 600; padding: 5px 0;">
+                    💼 인사 HR
+                </p>
+                <p style="color: #728c7c; font-size: 15px; margin-bottom: 15px;">
+                    조직과 구성원이 함께 성장할 수 있는 인사 전략 및 제도에 깊은 관심을 가지고 공부하고 있습니다.
+                </p>
+                <a href="https://www.instagram.com/ax_say?stkn=MTdlajR3MGoxZjA1dA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="link-btn">
+                    🔗 즐겨찾는 인스타그램 방문하기
+                </a>
+            </section>
+
+            <!-- 요즘 배우는 것 카드 -->
+            <section class="card">
+                <h2>📚 요즘 배우는 것</h2>
+                <ul class="hobby-list">
+                    <li>💡 채용 트렌드 및 인재 영입 전략</li>
+                    <li>🤝 조직문화 활성화 사례 연구</li>
+                    <li>📊 데이터 기반 인사(HR) 분석 기초</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- 오른쪽 컬럼: 3. 좋아하는 것 / 4. 캘린더 -->
+        <div class="column">
+            <!-- 좋아하는 것 카드 -->
+            <section class="card">
+                <h2>✨ 좋아하는 것</h2>
+                <ul class="hobby-list">
+                    <li>💬 다양한 사람들과의 소통</li>
+                    <li>📦 신제품 리뷰 찾아보기</li>
+                    <li>🏃‍♀️ 운동하기</li>
+                </ul>
+            </section>
+
+            <!-- 4번째 박스: 미니 달력 -->
+            <section class="card">
+                <h2>📅 2026년 10월</h2>
+                <div class="calendar-header">
+                    <span>Oct 2026</span>
+                </div>
+                <div class="calendar-grid">
+                    <div class="day-name" style="color: #d97777;">일</div>
+                    <div class="day-name">월</div>
+                    <div class="day-name">화</div>
+                    <div class="day-name">수</div>
+                    <div class="day-name">목</div>
+                    <div class="day-name">금</div>
+                    <div class="day-name" style="color: #6a9282;">토</div>
+
+                    <!-- 9월 잔여 날짜 (이전 달) -->
+                    <div class="date other-month">27</div>
+                    <div class="date other-month">28</div>
+                    <div class="date other-month">29</div>
+                    <div class="date other-month">30</div>
+                    <!-- 10월 시작 -->
+                    <div class="date">1</div>
+                    <div class="date">2</div>
+                    <div class="date">3</div>
+
+                    <div class="date" style="color: #d97777;">4</div>
+                    <div class="date">5</div>
+                    <div class="date">6</div>
+                    <div class="date">7</div>
+                    <div class="date">8</div>
+                    <div class="date">9</div>
+                    <div class="date" style="color: #6a9282;">10</div>
+
+                    <div class="date" style="color: #d97777;">11</div>
+                    <div class="date">12</div>
+                    <div class="date">13</div>
+                    <div class="date">14</div>
+                    <div class="date">15</div>
+                    <div class="date">16</div>
+                    <div class="date" style="color: #6a9282;">17</div>
+
+                    <div class="date" style="color: #d97777;">18</div>
+                    <div class="date">19</div>
+                    <div class="date">20</div>
+                    <div class="date">21</div>
+                    <div class="date">22</div>
+                    <div class="date">23</div>
+                    <div class="date" style="color: #6a9282;">24</div>
+
+                    <div class="date" style="color: #d97777;">25</div>
+                    <div class="date">26</div>
+                    <div class="date today">27</div>
+                    <div class="date">28</div>
+                    <div class="date">29</div>
+                    <div class="date">30</div>
+                    <div class="date" style="color: #6a9282;">31</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 목표 한 줄 카드 -->
+        <section class="goal-card">
+            <h2>🌟 목표</h2>
+            <p>"늘 새롭고 유익한 가치를 만들어내겠습니다"</p>
+        </section>
+
+        <!-- 하단 명함 스타일 카드 (이름·관심사) -->
+        <div class="business-card-wrapper">
+            <div class="business-card">
+                <div class="bc-icon">🏷️</div>
+                <h3>손아영</h3>
+                <p>관심사: 인사 HR</p>
+            </div>
+        </div>
+
+        <!-- 박수 카운터 버튼 및 메시지 영역 -->
+        <div class="counter-section">
+            <button class="counter-btn" id="counterBtn">👏 박수 치기</button>
+            <div id="counter-message">박수 0번</div>
+        </div>
+    </main>
+
+    <script>
+        let clickCount = 0;
+        const counterBtn = document.getElementById('counterBtn');
+        const counterMessage = document.getElementById('counter-message');
+
+        counterBtn.addEventListener('click', function() {
+            clickCount++;
+            counterMessage.textContent = `박수 ${clickCount}번`;
+            counterMessage.classList.add('show');
+        });
+    </script>
+
+</body>
+</html>
